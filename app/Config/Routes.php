@@ -53,5 +53,11 @@ $routes->get('dosen/jadwal/delete/(:segment)', 'Dosen\Jadwal::delete/$1', ['filt
 $routes->get('dosen/jadwal/pesan/(:segment)', 'Dosen\Jadwal::formPesan/$1');
 $routes->post('dosen/jadwal/pesan', 'Dosen\Jadwal::prosesPesan');
 
+$routes->get('dosen/profil', 'Dosen\Profil::index', ['filter' => 'dosenFilter']);
+$routes->get('dosen/profil/edit/(:segment)', 'Dosen\Profil::edit/$1', ['filter' => 'dosenFilter']);
+$routes->post('dosen/profil/update', 'Dosen\Profil::update', ['filter' => 'dosenFilter']);
+
+
+
 
 $routes->get('firebase/test', 'FirebaseController::testConnection');

@@ -102,7 +102,7 @@ class Home extends BaseController
             'absen' => null, // Tambahkan penghapusan nilai absen
         ]);
 
-        return redirect()->back()->with('success', 'Pesanan jadwal berhasil dibatalkan.');
+        return redirect()->back()->with('success', 'Pesanan jadwal berhasil dihapus.');
     }
 
     public function konfirmasiKehadiran()

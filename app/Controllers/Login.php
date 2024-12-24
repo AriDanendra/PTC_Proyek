@@ -52,6 +52,7 @@ class Login extends BaseController
                 if ($password === $password_db) {
                     $session_data = [
                         'username' => $userFound['username'],
+                        'nama'     => $userFound['nama'],
                         'logged_in' => TRUE,
                         'role_id' => $userFound['role']
                     ];

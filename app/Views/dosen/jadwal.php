@@ -70,7 +70,7 @@
                             <?php if ($row['status'] == 'Tersedia'): ?>
                                 <span class="badge bg-success">Tersedia</span>
                             <?php else: ?>
-                                <span class="badge bg-danger">Sudah Dipesan</span>
+                                <span class="badge bg-danger">Dipakai</span>
                             <?php endif; ?>
                         </td>
                         <!-- Dosen -->

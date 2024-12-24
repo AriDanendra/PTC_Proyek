@@ -12,12 +12,30 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
-    
 </head>
 
 <body>
     <div class="signin-wrapper">
         <div class="form-wrapper">
+
+            <div class="text-center mb-3">
+                <!-- Logo SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="80" height="80">
+                    <!-- Background circles -->
+                    <circle cx="200" cy="200" r="190" fill="black" />
+                    <circle cx="200" cy="200" r="180" fill="white" />
+                    <circle cx="200" cy="200" r="170" fill="black" />
+                    <!-- Centered fingerprint icon, scaled up from 24x24 -->
+                    <g transform="translate(100, 100) scale(8)" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3" />
+                        <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6" />
+                        <path d="M12 11v2a14 14 0 0 0 2.5 8" />
+                        <path d="M8 15a18 18 0 0 0 1.8 6" />
+                        <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" />
+                    </g>
+                </svg>
+            </div>
+
             <h2 class="mb-15 text-center">Smart Room ITH</h2>
             <p class="text-sm mb-25 text-center">Please sign in to continue.</p>
 

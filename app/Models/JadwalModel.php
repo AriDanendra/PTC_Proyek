@@ -205,8 +205,16 @@ class JadwalModel
             return false; // Tidak dapat absen keluar jika status absen dosen masih 1
         }
 
-        // Update status absen di jadwal menjadi 0
-        $jadwalReference->update(['absen' => 0]);
+        // Update jadwal dengan menghapus data pesanan dan mengatur status menjadi Tersedia
+        $updates = [
+            'status' => 'Tersedia',
+            'mata_kuliah' => null,
+            'kelas' => null,
+            'nama_dosen' => null,
+            'absen' => 0
+        ];
+
+        $jadwalReference->update($updates);
 
         return true;
     }

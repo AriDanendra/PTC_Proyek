@@ -100,18 +100,18 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel<?= $row['id_jadwal'] ?>">Konfirmasi Pembatalan</h5>
+                                    <h5 class="modal-title" id="modalLabel<?= $row['id_jadwal'] ?>">Konfirmasi Penghapusan</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Apakah Anda yakin ingin membatalkan pesanan untuk jadwal ini?
+                                    Apakah Anda yakin ingin menghapus pesanan untuk jadwal ini?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                     <form method="POST" action="<?= base_url('dosen/home/batalkan') ?>" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="id_jadwal" value="<?= esc($row['id_jadwal']) ?>">
-                                        <button type="submit" class="btn btn-danger">Batalkan</button>
+                                        <button type="submit" class="btn btn-danger">hapus</button>
                                     </form>
                                 </div>
                             </div>

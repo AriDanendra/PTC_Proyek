@@ -90,17 +90,17 @@ class PenggunaModel
         return null;
     }
     public function getPenggunaByName($nama)
-{
-    $reference = $this->database->getReference('pengguna');
-    $penggunaData = $reference->getValue() ?: [];
+    {
+        $reference = $this->database->getReference('pengguna');
+        $penggunaData = $reference->getValue() ?: [];
 
-    foreach ($penggunaData as $key => $pengguna) {
-        if ($pengguna['nama'] === $nama) {
-            return $pengguna;
+        foreach ($penggunaData as $key => $pengguna) {
+            if ($pengguna['nama'] === $nama) {
+                $pengguna['id_pengguna'] = $key; // Tambahkan kunci Firebase sebagai ID
+                return $pengguna;
+            }
         }
-    }
 
-    return null;
-}
-    
+        return null;
+    }
 }
