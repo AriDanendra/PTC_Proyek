@@ -45,10 +45,8 @@
                 <th>Hari</th>
                 <th>Pekan</th>
                 <th>Waktu</th>
-                <th>Mata Kuliah</th>
-                <th>Kelas</th>
-                <th>Ruangan</th>
                 <th>Absen</th>
+                <th>Waktu Absen</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -64,12 +62,6 @@
                         <td><?= esc($row['pekan']) ?></td>
                         <!-- Waktu -->
                         <td><?= esc($row['waktu_mulai']) ?> - <?= esc($row['waktu_selesai']) ?></td>
-                        <!-- Mata Kuliah -->
-                        <td><?= esc($row['mata_kuliah'] ?? '-') ?></td>
-                        <!-- Kelas -->
-                        <td><?= esc($row['kelas'] ?? '-') ?></td>
-                        <!-- Ruangan -->
-                        <td><?= esc($row['nama_ruangan'] ?? '-') ?></td>
                         <!-- Absen -->
                         <td>
                             <?php if (isset($row['absen']) && $row['absen'] === 1): ?>
@@ -87,13 +79,47 @@
                                 </form>
                             <?php endif; ?>
                         </td>
+                        <!-- Waktu Absen -->
+                        <td>
+                            <?php if (isset($row['absen']) && $row['absen'] === 1): ?>
+                                <?= esc($row['waktu_absen'] ?? '-') ?>
+                            <?php else: ?>
+                                -
+                            <?php endif; ?>
+                        </td>
                         <!-- Aksi -->
                         <td>
+                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalDetail<?= $row['id_jadwal'] ?>">
+                                Detail
+                            </button>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalBatalkan<?= $row['id_jadwal'] ?>">
                                 Hapus
                             </button>
                         </td>
                     </tr>
+
+                    <!-- Modal Detail -->
+                    <div class="modal fade" id="modalDetail<?= $row['id_jadwal'] ?>" tabindex="-1" aria-labelledby="modalDetailLabel<?= $row['id_jadwal'] ?>" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalDetailLabel<?= $row['id_jadwal'] ?>">Detail Jadwal</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Mata Kuliah:</strong> <?= esc($row['mata_kuliah'] ?? '-') ?></p>
+                                    <p><strong>Kelas:</strong> <?= esc($row['kelas'] ?? '-') ?></p>
+                                    <p><strong>Ruangan:</strong> <?= esc($row['nama_ruangan'] ?? '-') ?></p>
+                                    <p><strong>Hari:</strong> <?= esc($row['hari']) ?></p>
+                                    <p><strong>Pekan:</strong> <?= esc($row['pekan']) ?></p>
+                                    <p><strong>Waktu:</strong> <?= esc($row['waktu_mulai']) ?> - <?= esc($row['waktu_selesai']) ?></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Modal Pembatalan -->
                     <div class="modal fade" id="modalBatalkan<?= $row['id_jadwal'] ?>" tabindex="-1" aria-labelledby="modalLabel<?= $row['id_jadwal'] ?>" aria-hidden="true">
@@ -111,7 +137,7 @@
                                     <form method="POST" action="<?= base_url('dosen/home/batalkan') ?>" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="id_jadwal" value="<?= esc($row['id_jadwal']) ?>">
-                                        <button type="submit" class="btn btn-danger">hapus</button>
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
                                     </form>
                                 </div>
                             </div>
@@ -120,13 +146,11 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="9" class="text-center">Tidak ada jadwal ditemukan.</td>
+                    <td colspan="7" class="text-center">Tidak ada jadwal ditemukan.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
 </div>
-
-
 
 <?= $this->endSection() ?>
